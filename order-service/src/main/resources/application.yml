@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: order-service
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  cloud:
+    stream:
+      function:
+        definition: sendMessage
+      bindings:
+        sendOutbox:
+          destination: orders
+      kafka:
+        binder:
+          brokers: localhost:29092
+
+server:
+  servlet:
+    context-path: /api/v1/orders
