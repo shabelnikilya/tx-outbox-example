@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: notification-service
+  cloud:
+    stream:
+      bindings:
+        receiveMsgOutbox-in-0:
+          destination: orders
+      kafka:
+        binder:
+          brokers: localhost:29092
+
+
+server:
+  port: 8081
